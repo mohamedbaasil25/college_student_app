@@ -3,7 +3,7 @@
 A comprehensive PJCE portal application built with HTML, CSS, and Vanilla JavaScript.
 
 ## Features
-- **Secure Login**: PJCE portal authentication (Mock credentials pre-filled).
+- **Secure Login**: PJCE portal authentication
 - **Dashboard**: Quick access to all services.
 - **Profile**: View student details (Register No, Address, etc.).
 - **Fees**: Check payment status and outstanding balance.
@@ -23,3 +23,4 @@ The app features a premium dark/glassmorphism design with smooth animations and 
 - `index.html`: Main application skeleton and templates.
 - `style.css`: Premium styling system.
 - `script.js`: Application logic and routing.
+
