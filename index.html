@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ponjesly College of Engineering</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div id="app">
+        <!-- Views will be injected here or toggled -->
+    </div>
+
+    <!-- Templates for different views -->
+
+    <!-- View: Role Selection (Landing) -->
+    <template id="view-landing">
+        <div class="login-container">
+            <div class="logo-section">
+                <div class="logo-circle">
+                    <img src="assets/logo.png" alt="PJCE Logo" class="app-logo">
+                </div>
+                <h1>PJCE Connect</h1>
+                <p>Welcome to Student Portal</p>
+            </div>
+
+            <div class="role-selection">
+                <button class="btn-primary role-btn" data-role="student">
+                    <div class="role-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                            <circle cx="12" cy="7" r="4" />
+                        </svg>
+                    </div>
+                    Student Login
+                </button>
+                <button class="btn-outline role-btn" data-role="management">
+                    <div class="role-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                            <circle cx="9" cy="7" r="4" />
+                            <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+                            <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                        </svg>
+                    </div>
+                    Management Login
+                </button>
+            </div>
+
+            <div class="footer-credit">
+                <p>Developed by <a href="https://baasil25.netlify.app" target="_blank">Mohamed Baasil</a></p>
+            </div>
+        </div>
+    </template>
+
+    <!-- View: Student Login -->
+    <template id="view-login">
+        <div class="login-container">
+            <div class="page-header center-header">
+                <button class="back-link-btn" id="login-back">Back</button>
+                <h2>Student</h2>
+            </div>
+            <div class="logo-section compact">
+                <div class="logo-circle small">
+                    <img src="assets/logo.png" alt="PJCE Logo" class="app-logo">
+                </div>
+            </div>
+
+            <form id="login-form">
+                <div class="input-group">
+                    <label>College ID</label>
+                    <input type="text" id="college-id" placeholder="Enter Register Number" required>
+                </div>
+                <div class="input-group">
+                    <label>Password</label>
+                    <input type="password" id="password" placeholder="••••••••" required>
+                </div>
+                <button type="submit" class="btn-primary">LOG IN</button>
+            </form>
+            <p class="login-footer">Trouble logging in? <a href="#">Contact Admin</a></p>
+        </div>
+    </template>
+
+    <!-- View: Management Login -->
+    <template id="view-login-admin">
+        <div class="login-container">
+            <div class="page-header center-header">
+                <button class="back-link-btn" id="admin-login-back">Back</button>
+                <h2>Management</h2>
+            </div>
+            <div class="logo-section compact">
+                <div class="logo-circle small">
+                    <img src="assets/logo.png" alt="PJCE Logo" class="app-logo">
+                </div>
+            </div>
+
+            <form id="admin-login-form">
+                <div class="input-group">
+                    <label>Username</label>
+                    <input type="text" id="admin-user" placeholder="Username" required>
+                </div>
+                <div class="input-group">
+                    <label>Password</label>
+                    <input type="password" id="admin-pass" placeholder="••••••••" required>
+                </div>
+                <button type="submit" class="btn-primary">ACCESS DASHBOARD</button>
+            </form>
+        </div>
+    </template>
+
+    <!-- View: Student Dashboard -->
+    <template id="view-dashboard">
+        <div class="app-header">
+            <div class="header-profile">
+                <div class="avatar-small">A</div>
+                <div class="header-text">
+                    <h2>Hello, Abdullah</h2>
+                    <p>961823205000</p>
+                </div>
+            </div>
+            <button class="icon-btn" id="logout-btn">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
+                    <polyline points="16 17 21 12 16 7" />
+                    <line x1="21" y1="12" x2="9" y2="12" />
+                </svg>
+            </button>
+        </div>
+
+        <div class="dashboard-grid">
+            <div class="card-menu-item" data-target="profile" style="--accent: #2563EB;">
+                <div class="icon-box"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                        <circle cx="12" cy="7" r="4" />
+                    </svg></div>
+                <span>Profile</span>
+            </div>
+            <div class="card-menu-item" data-target="fees" style="--accent: #059669;">
+                <div class="icon-box"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2">
+                        <line x1="12" y1="1" x2="12" y2="23" />
+                        <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
+                    </svg></div>
+                <span>Fees</span>
+            </div>
+            <div class="card-menu-item" data-target="noticeboard" style="--accent: #F59E0B;">
+                <div class="icon-box"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2">
+                        <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+                        <line x1="16" y1="2" x2="16" y2="6" />
+                        <line x1="8" y1="2" x2="8" y2="6" />
+                        <line x1="3" y1="10" x2="21" y2="10" />
+                    </svg></div>
+                <span>Notice Board</span>
+            </div>
+            <div class="card-menu-item" data-target="results" style="--accent: #D97706;">
+                <div class="icon-box"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                        <polyline points="14 2 14 8 20 8" />
+                        <line x1="16" y1="13" x2="8" y2="13" />
+                        <line x1="16" y1="17" x2="8" y2="17" />
+                        <polyline points="10 9 9 9 8 9" />
+                    </svg></div>
+                <span>Results</span>
+            </div>
+            <div class="card-menu-item" data-target="bus-pass" style="--accent: #7C3AED;">
+                <div class="icon-box"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2">
+                        <path
+                            d="M19 17h2l.64-2.54c.24-.959.24-1.962 0-2.92l-1.07-4.27A3 3 0 0 0 17.66 5H4.34a3 3 0 0 0-2.91 2.27L.36 11.54c-.24.959-.24 1.962 0 2.92l.64 2.54h2" />
+                        <path d="M16 21h-2" />
+                        <path d="M10 21H8" />
+                        <circle cx="5.5" cy="17.5" r="2.5" />
+                        <circle cx="16.5" cy="17.5" r="2.5" />
+                    </svg></div>
+                <span>Bus Pass</span>
+            </div>
+            <div class="card-menu-item" data-target="contact" style="--accent: #DB2777;">
+                <div class="icon-box"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2">
+                        <path
+                            d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+                    </svg></div>
+                <span>Contact Us</span>
+            </div>
+        </div>
+
+        <div class="footer-credit">
+            <p>Developed by <a href="https://baasil25.netlify.app" target="_blank">Mohamed Baasil</a></p>
+        </div>
+    </template>
+
+    <!-- View: Admin Dashboard -->
+    <template id="view-dashboard-admin">
+        <div class="app-header">
+            <div class="header-profile">
+                <div class="avatar-small" style="background: var(--danger)">M</div>
+                <div class="header-text">
+                    <h2>Management Portal</h2>
+                    <p>Admin Access</p>
+                </div>
+            </div>
+            <div class="header-actions">
+                <button class="icon-btn" id="admin-logout-btn">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
+                        <polyline points="16 17 21 12 16 7" />
+                        <line x1="21" y1="12" x2="9" y2="12" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <div class="scroll-content">
+            <div class="admin-tabs">
+                <button class="tab-btn active" data-tab="students">Students</button>
+                <button class="tab-btn" data-tab="fees">Fees</button>
+                <button class="tab-btn" data-tab="notices">Noticeboard</button>
+            </div>
+
+            <div id="tab-content-students">
+                <div class="action-header">
+                    <h3 class="section-title">Student Records</h3>
+                    <button class="btn-primary btn-sm" id="add-student-btn">+ Add Student</button>
+                </div>
+                <div class="search-bar">
+                    <input type="text" placeholder="Search by ID or Name..." id="student-search">
+                </div>
+                <div class="student-list" id="admin-student-list">
+                    <!-- Dynamically Populated -->
+                </div>
+            </div>
+
+            <div id="tab-content-fees" style="display:none">
+                <h3 class="section-title">Department Balances</h3>
+                <div class="dept-fees-grid" id="dept-summary-list">
+                    <!-- Dynamically Populated -->
+                </div>
+
+                <h3 class="section-title" style="margin-top:24px">Student Fee Report</h3>
+                <div class="dept-filter-bar" id="fee-dept-filter-bar">
+                    <!-- Dept chips (CSE, IT, etc.) -->
+                </div>
+
+                <div class="fee-detailed-table">
+                    <div class="fee-table-row header">
+                        <span>Student Name</span>
+                        <span>Paid</span>
+                        <span>Due</span>
+                        <span>Total</span>
+                    </div>
+                    <div id="fee-students-container">
+                        <!-- Student rows -->
+                    </div>
+                </div>
+
+                <h3 class="section-title" style="margin-top:24px">Recent Transactions</h3>
+                <div class="fee-activity-list" id="fee-activity-list">
+                    <!-- Dynamically Populated -->
+                </div>
+            </div>
+
+            <div id="tab-content-notices" style="display:none">
+                <div class="action-header">
+                    <h3 class="section-title">Manage Notices</h3>
+                    <button class="btn-primary btn-sm" id="admin-add-notice-btn">+ New Notice</button>
+                </div>
+                <div class="admin-notice-list" id="admin-notice-list">
+                    <!-- Dynamically Populated -->
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-credit">
+            <p>Developed by <a href="https://baasil25.netlify.app" target="_blank">Mohamed Baasil</a></p>
+        </div>
+    </template>
+
+    <!-- View: Admin Edit User -->
+    <template id="view-edit-user">
+        <div class="page-header">
+            <button class="back-btn"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2">
+                    <path d="M19 12H5" />
+                    <path d="M12 19l-7-7 7-7" />
+                </svg></button>
+            <h2>Student Details</h2>
+        </div>
+        <div class="scroll-content">
+            <div class="edit-photo-section">
+                <div class="avatar-large" id="edit-avatar-preview">
+                    <img src="" alt="Profile">
+                </div>
+                <button class="btn-outline btn-sm" id="change-photo-btn">Change Photo</button>
+                <input type="file" id="photo-input" style="display:none" accept="image/*">
+            </div>
+
+            <form id="edit-user-form">
+                <h3 class="section-title">Personal Info</h3>
+                <div class="input-group">
+                    <label>Register Number (ID)</label>
+                    <input type="text" id="edit-id" readonly style="opacity:0.7">
+                </div>
+                <div class="input-group">
+                    <label>Name</label>
+                    <input type="text" id="edit-name" required>
+                </div>
+                <div class="input-group">
+                    <label>Department</label>
+                    <select id="edit-dept" required>
+                        <option value="CSE">Computer Science Engineering (CSE)</option>
+                        <option value="IT">Information Technology (IT)</option>
+                        <option value="AIDS">Artificial Intelligence & Data Science (AIDS)</option>
+                        <option value="AIML">AI & Machine Learning (AIML)</option>
+                        <option value="MECH">Mechanical Engineering (MECH)</option>
+                        <option value="ECE">Electronics and Communication (ECE)</option>
+                        <option value="EEE">Electrical and Electronics (EEE)</option>
+                        <option value="CIVIL">Civil Engineering (CIVIL)</option>
+                    </select>
+                </div>
+                <div class="input-group">
+                    <label>Year</label>
+                    <input type="text" id="edit-year" required>
+                </div>
+                <div class="input-group">
+                    <label>Login Password</label>
+                    <input type="text" id="edit-password" required>
+                </div>
+
+                <h3 class="section-title" style="margin-top:24px;">Bus Pass</h3>
+                <div class="input-group">
+                    <label>Route</label>
+                    <input type="text" id="edit-bus-route" placeholder="Enter route (e.g. Nagercoil)">
+                </div>
+                <div class="input-group">
+                    <label>Bus No</label>
+                    <input type="text" id="edit-bus-no" placeholder="e.g. 27">
+                </div>
+                <div class="input-group">
+                    <label>Validity</label>
+                    <input type="text" id="edit-bus-valid" placeholder="e.g. Dec 2026">
+                </div>
+
+                <h3 class="section-title" style="margin-top:24px;">Fee Records</h3>
+                <div id="edit-fee-list">
+                    <!-- Fee rows will be injected here -->
+                </div>
+                <button type="button" class="btn-outline" id="add-fee-btn" style="margin-bottom: 20px;">+ Add New Fee
+                    Record</button>
+
+                <div class="action-buttons-stack">
+                    <button type="submit" class="btn-primary">Save Changes</button>
+                    <button type="button" class="btn-danger-outline" id="delete-student-btn">Delete Student</button>
+                </div>
+            </form>
+        </div>
+    </template>
+
+    <!-- View: Admin Add Student -->
+    <template id="view-add-student">
+        <div class="page-header">
+            <button class="back-btn"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2">
+                    <path d="M19 12H5" />
+                    <path d="M12 19l-7-7 7-7" />
+                </svg></button>
+            <h2>Add New Student</h2>
+        </div>
+        <div class="scroll-content">
+            <form id="add-student-form">
+                <h3 class="section-title">Required Details</h3>
+                <div class="input-group">
+                    <label>Register Number (ID)</label>
+                    <input type="text" id="add-id" placeholder="e.g. 961823205XXX" required>
+                </div>
+                <div class="input-group">
+                    <label>Full Name</label>
+                    <input type="text" id="add-name" placeholder="Student Name" required>
+                </div>
+                <div class="input-group">
+                    <label>Department</label>
+                    <select id="add-dept" required>
+                        <option value="CSE">Computer Science Engineering (CSE)</option>
+                        <option value="IT">Information Technology (IT)</option>
+                        <option value="AIDS">Artificial Intelligence & Data Science (AIDS)</option>
+                        <option value="AIML">AI & Machine Learning (AIML)</option>
+                        <option value="MECH">Mechanical Engineering (MECH)</option>
+                        <option value="ECE">Electronics and Communication (ECE)</option>
+                        <option value="EEE">Electrical and Electronics (EEE)</option>
+                        <option value="CIVIL">Civil Engineering (CIVIL)</option>
+                    </select>
+                </div>
+                <div class="input-group">
+                    <label>Year</label>
+                    <input type="text" id="add-year" placeholder="e.g. 2023" required>
+                </div>
+                <div class="input-group">
+                    <label>Login Password</label>
+                    <input type="text" id="add-password" value="password" required>
+                </div>
+
+                <div class="action-buttons sticky-bottom">
+                    <button type="submit" class="btn-primary">Registers Student</button>
+                </div>
+            </form>
+        </div>
+    </template>
+
+    <template id="view-profile">
+        <div class="page-header">
+            <button class="back-btn"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2">
+                    <path d="M19 12H5" />
+                    <path d="M12 19l-7-7 7-7" />
+                </svg></button>
+            <h2>Profile</h2>
+        </div>
+        <div class="scroll-content">
+            <div class="profile-header-card">
+                <div class="avatar-large">
+                    <!-- Placeholder img -->
+                    <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Abdullah" alt="Profile">
+                </div>
+                <h3>Abdullah</h3>
+                <p>961823205000</p>
+            </div>
+
+            <div class="info-list">
+                <div class="info-item">
+                    <label>Register Number</label>
+                    <div class="value">961823205000</div>
+                </div>
+                <div class="info-item">
+                    <label>Year of Admission</label>
+                    <div class="value">2023</div>
+                </div>
+                <div class="info-item">
+                    <label>Department</label>
+                    <div class="value">Information Technology</div>
+                </div>
+                <div class="info-item">
+                    <label>Address</label>
+                    <div class="value">Nagercoil</div>
+                </div>
+                <div class="info-item">
+                    <label>Mobile Number</label>
+                    <div class="value">0123456789</div>
+                </div>
+                <div class="info-item">
+                    <label>Email ID</label>
+                    <div class="value">example@email.com</div>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <template id="view-fees">
+        <div class="page-header">
+            <button class="back-btn"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2">
+                    <path d="M19 12H5" />
+                    <path d="M12 19l-7-7 7-7" />
+                </svg></button>
+            <h2>Fee Details</h2>
+        </div>
+        <div class="scroll-content">
+            <div class="balance-card">
+                <p>Outstanding Balance</p>
+                <h2>₹ 45,000</h2>
+                <div class="tag unpaid">Unpaid</div>
+            </div>
+
+            <h3 class="section-title">Semesters</h3>
+            <div class="fee-list">
+                <div class="fee-item">
+                    <div class="fee-info">
+                        <h4>Semester 5</h4>
+                        <p>Tuition Fee</p>
+                    </div>
+                    <div class="fee-amount">
+                        <span>₹ 45,000</span>
+                        <small class="status-pending">Due</small>
+                    </div>
+                </div>
+                <div class="fee-item success">
+                    <div class="fee-info">
+                        <h4>Semester 4</h4>
+                        <p>Tuition Fee</p>
+                    </div>
+                    <div class="fee-amount">
+                        <span>₹ 45,000</span>
+                        <small class="status-paid">Paid</small>
+                    </div>
+                </div>
+                <div class="fee-item success">
+                    <div class="fee-info">
+                        <h4>Semester 3</h4>
+                        <p>Tuition Fee</p>
+                    </div>
+                    <div class="fee-amount">
+                        <span>₹ 45,000</span>
+                        <small class="status-paid">Paid</small>
+                    </div>
+                </div>
+            </div>
+            <button class="btn-primary float-bottom">Pay Now</button>
+        </div>
+    </template>
+
+    <template id="view-bus-pass">
+        <div class="page-header">
+            <button class="back-btn"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2">
+                    <path d="M19 12H5" />
+                    <path d="M12 19l-7-7 7-7" />
+                </svg></button>
+            <h2>Your Virtual Pass</h2>
+        </div>
+        <div class="scroll-content flex-center">
+            <div class="id-card">
+                <div class="id-header">
+                    <img src="assets/logo.png" alt="Logo" class="id-logo-small">
+                    <div class="college-details">
+                        <h4>PONJESLY COLLEGE OF ENGINEERING</h4>
+                        <p>Parvathipuram, Alamparai, Nagercoil-629 003</p>
+                    </div>
+                </div>
+                <div class="id-title">Bus Pass</div>
+                <div class="id-body">
+                    <div class="id-text">
+                        <p><strong>Bus No:</strong> 27</p>
+                        <p><strong>Name:</strong> Abdullah</p>
+                        <p><strong>Dept:</strong> IT</p>
+                        <p><strong>ID:</strong> 961823205000</p>
+                        <p><strong>Year:</strong> Third</p>
+                        <p><strong>Route:</strong> Nagercoil</p>
+                        <p><strong>Valid:</strong> Dec 2026</p>
+                    </div>
+                    <div class="id-photo">
+                        <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Abdullah" alt="Student">
+                    </div>
+                </div>
+                <div class="id-footer">
+                    <div class="seal">OFFICE SEAL</div>
+                </div>
+            </div>
+
+        </div>
+    </template>
+
+    <template id="view-noticeboard">
+        <div class="page-header">
+            <button class="back-btn"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2">
+                    <path d="M19 12H5" />
+                    <path d="M12 19l-7-7 7-7" />
+                </svg></button>
+            <h2>Notice Board</h2>
+        </div>
+        <div class="scroll-content">
+            <div class="notice-list" id="notice-list-container">
+                <!-- Dynamically Populated -->
+            </div>
+        </div>
+    </template>
+
+    <template id="view-contact">
+        <div class="page-header">
+            <button class="back-btn"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2">
+                    <path d="M19 12H5" />
+                    <path d="M12 19l-7-7 7-7" />
+                </svg></button>
+            <h2>Contact Us</h2>
+        </div>
+        <div class="scroll-content">
+            <div class="contact-list">
+                <a href="tel:+911234567890" class="contact-item">
+                    <div class="icon-circle"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2">
+                            <path
+                                d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+                        </svg></div>
+                    <div class="contact-info">
+                        <label>College Office</label>
+                        <span>+91-4652-259680 | +91 94899 862200</span>
+                    </div>
+                </a>
+                <a href="mailto:ponjeslyce@yahoo.co.in" class="contact-item">
+                    <div class="icon-circle"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                            <polyline points="22,6 12,13 2,6" />
+                        </svg></div>
+                    <div class="contact-info">
+                        <label>Email Enquiry</label>
+                        <span>ponjeslyce@yahoo.co.in</span>
+                    </div>
+                </a>
+                <a href="#" class="contact-item">
+                    <div class="icon-circle"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2">
+                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                            <circle cx="12" cy="10" r="3" />
+                        </svg></div>
+                    <div class="contact-info">
+                        <label>Location</label>
+                        <span> Parvathipuram, Alamparai Nagercoil-629 003 Kanyakumari District,Tamil Nadu</span>
+                    </div>
+                </a>
+            </div>
+
+            <div class="map-container">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3948.9537306885686!2d77.39657937500941!3d8.207407891824714!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b04f74875a1ea97%3A0xf23cd3c5f5c2f485!2sPonjesly%20College%20of%20Engineering!5e0!3m2!1sen!2sin!4v1770626724627!5m2!1sen!2sin"
+                    width="100%" height="250" style="border:0;" allowfullscreen="" loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </div>
+    </template>
+
+    <template id="view-add-notice">
+        <div class="page-header">
+            <button class="back-btn"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2">
+                    <path d="M19 12H5" />
+                    <path d="M12 19l-7-7 7-7" />
+                </svg></button>
+            <h2>Create New Notice</h2>
+        </div>
+        <div class="scroll-content">
+            <form id="add-notice-form">
+                <div class="input-group">
+                    <label>Notice Title</label>
+                    <input type="text" id="notice-title" required placeholder="Enter headline">
+                </div>
+                <div class="input-group">
+                    <label>Category</label>
+                    <select id="notice-category" required>
+                        <option value="General">General</option>
+                        <option value="Exam">Exam</option>
+                        <option value="Event">Event</option>
+                    </select>
+                </div>
+                <div class="input-group" style="margin-bottom:24px;">
+                    <label>Detailed Content</label>
+                    <textarea id="notice-content" required rows="6"
+                        style="width:100%; background:var(--card-bg); border:var(--card-border); border-radius:12px; color:white; padding:16px; font-family:inherit; font-size:16px; outline:none;"></textarea>
+                </div>
+                <div class="input-group">
+                    <label>Publish Date</label>
+                    <input type="date" id="notice-date" required>
+                </div>
+
+                <div class="sticky-bottom">
+                    <button type="submit" class="btn-primary">Publish Notice</button>
+                </div>
+            </form>
+        </div>
+    </template>
+
+    <template id="view-edit-notice">
+        <div class="page-header">
+            <button class="back-btn"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2">
+                    <path d="M19 12H5" />
+                    <path d="M12 19l-7-7 7-7" />
+                </svg></button>
+            <h2>Edit Post</h2>
+        </div>
+        <div class="scroll-content">
+            <form id="edit-notice-form">
+                <div class="input-group">
+                    <label>Notice Title</label>
+                    <input type="text" id="edit-notice-title" required>
+                </div>
+                <div class="input-group">
+                    <label>Category</label>
+                    <select id="edit-notice-category" required>
+                        <option value="General">General</option>
+                        <option value="Exam">Exam</option>
+                        <option value="Event">Event</option>
+                    </select>
+                </div>
+                <div class="input-group" style="margin-bottom:24px;">
+                    <label>Detailed Content</label>
+                    <textarea id="edit-notice-content" required rows="6"
+                        style="width:100%; background:var(--card-bg); border:var(--card-border); border-radius:12px; color:white; padding:16px; font-family:inherit; font-size:16px; outline:none;"></textarea>
+                </div>
+                <div class="input-group">
+                    <label>Publish Date</label>
+                    <input type="date" id="edit-notice-date" required>
+                </div>
+
+                <div class="sticky-bottom">
+                    <button type="submit" class="btn-primary">Update Notice</button>
+                </div>
+            </form>
+        </div>
+    </template>
+
+    <!-- SQL Logic -->
+    <script src="https://cdn.jsdelivr.net/npm/alasql@4.4.0/dist/alasql.min.js"></script>
+    <script src="js/sql_data.js"></script>
+    <script src="js/notice_data.js"></script>
+    <script src="js/script.js"></script>
+</body>
+
+</html>
